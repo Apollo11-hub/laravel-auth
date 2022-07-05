@@ -25,6 +25,8 @@ Route::middleware('auth')
     ->name('admin.')
     ->group(function(){
         Route::get('/','HomeController@index')->name('index');
+        // Rotte CRUD
+        Route::resource('posts', 'PostController');
     });
 
 

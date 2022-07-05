@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <span>Sei LOGGATO!!!</span>
+                    <span>Benvenuto {{Auth::user()->name}}</span>
                 </div>
             </div>
         </div>
