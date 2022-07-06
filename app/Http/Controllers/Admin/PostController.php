@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $new_post = new Post();
+
+        $data['slug'] = Post::slugGenerator(($data['title']));
+        $new_post->fill($data);
+        $new_post->save();
+
+        return redirect()->route('admin.posts.index', $new_post);
     }
 
     /**
@@ -48,7 +56,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -59,7 +68,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -71,7 +81,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $post = Post::find($id);
+
+        $data['slug'] = Post::slugGenerator(($data['title']));
+        $post->update($data);
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**

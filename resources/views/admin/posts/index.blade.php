@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="container">
+
     <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">Azioni</th>
+                <th class="" scope="col">Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +17,12 @@
                 <tr>
                     <th scope="row">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
-                    <td>BOTTONIXXX</td>
+                    <td>
+                        <a type="button" class="btn btn-warning" href="{{route('admin.posts.show', $post)}}">SHOW</a>
+                        <a type="button" class="btn btn-success" href="{{route('admin.posts.edit', $post)}}">EDIT</a>
+                        <a type="button" class="btn btn-danger" href="#">SHOW</a>
+
+                    </td>
 
                 </tr>
 
