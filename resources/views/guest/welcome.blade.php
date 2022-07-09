@@ -24,7 +24,7 @@
                 height: 100vh;
             }
 
-            .flex-center {
+            .flex--enter {
                 align-items: center;
                 display: flex;
                 justify-content: center;
